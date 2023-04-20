@@ -5,6 +5,7 @@
   "scripts": {
     "start": "nx serve core-app",
     "build": "nx build core-app",
+    "docker-compose": "docker-compose --file=./apps/core-app/docker-compose.yml up -d",
     "generate-migrations": " nx run core-app:generate-migrations",
     "run-migrations": "nx run core-app:run-migrations"
   },
