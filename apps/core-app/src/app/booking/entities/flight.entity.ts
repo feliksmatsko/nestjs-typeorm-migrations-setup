@@ -12,6 +12,9 @@ export class Flight {
   @PrimaryGeneratedColumn()
   id: number;
 
+  @Column()
+  airline: string;
+
   @Column({ unique: true })
   flightNumber: string;
 

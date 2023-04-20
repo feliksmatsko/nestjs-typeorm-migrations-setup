@@ -37,6 +37,33 @@
         }
       }
     },
+    "build-migration-config": {
+      "executor": "@nrwl/node:webpack",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/migrations/core-app",
+        "main": "apps/core-app/src/typeorm-cli.config.ts",
+        "tsConfig": "apps/core-app/tsconfig.app.json"
+      }
+    },
+    "generate-migrations": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "cwd": "apps/core-app",
+        "commands": ["npx typeorm migration:generate src/migrations/SchemaSync -d ../../dist/migrations/core-app/main.js"]
+      },
+      "dependsOn": ["build-migration-config"]
+    },
+    "run-migrations": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "cwd": "apps/core-app",
+        "commands": ["npx typeorm migration:run -d ../../dist/migrations/core-app/main.js"]
+      },
+      "dependsOn": ["build-migration-config"]
+    },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
