@@ -14,7 +14,6 @@
         "outputPath": "dist/apps/core-app",
         "main": "apps/core-app/src/main.ts",
         "tsConfig": "apps/core-app/tsconfig.app.json",
-        "assets": ["apps/core-app/src/assets"],
         "isolatedConfig": true,
         "webpackConfig": "apps/core-app/webpack.config.js"
       },
